@@ -73,6 +73,7 @@
     </Content>
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\dataTables.dataTables.min.css" />
     <Content Include="assets\js\bootstrap.bundle.min.js" />
     <Content Include="assets\js\dataTables.min.js" />
     <Content Include="assets\js\jquery-3.6.0.min.js" />
