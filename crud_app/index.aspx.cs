@@ -26,7 +26,7 @@ namespace crud_app
             }
             else
             {
-                Response.Write("<script>alert('User Name Exists !');</script>");
+                Response.Write("<script>alert('User ID Exists Try with Another ID !');</script>");
             }
         }
 
@@ -100,5 +100,50 @@ namespace crud_app
             txt_email.Text = "";
             txt_phone.Text = "";
          }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (checkUserExists())
+            {
+                updateUser();
+            }
+            else
+            {
+                Response.Write("<script>alert('User Doesn't Exists !');</script>");
+            }
+        }
+
+        void updateUser()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strCon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                string gen;
+                if (rad_male.Checked == true)
+                {
+                    gen = rad_male.Text;
+                }
+                else
+                {
+                    gen = rad_female.Text;
+                }
+                SqlCommand cmd = new SqlCommand("UPDATE data SET name='"+txt_name.Text.Trim()+"', email='"+txt_email.Text.Trim()+"', gender='"+gen+"', mobile='"+txt_phone.Text.Trim()+"' WHERE id='"+txt_id.Text.Trim()+"' ", con);
+                int res = cmd.ExecuteNonQuery();
+                if (res == 1) {
+                    Response.Write("<script>alert('Data Updated Successfully !');</script>");
+                    clearForm();
+                    gr_userData.DataBind();
+                }
+                con.Close();
+            }
+            catch (Exception exc)
+            {
+                Response.Write("<script>alert('" + exc.Message + "');</script>");
+            }
+        }
     }
 }

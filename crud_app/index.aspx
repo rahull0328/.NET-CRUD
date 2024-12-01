@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid py-2 py-2">
-            <h1 class="d-flex align-items-center justify-content-center p-3">CRUD APP Using ASP.NET</h1>
+            <h1 class="d-flex align-items-center justify-content-center p-3 text-warning">CRUD APP Using ASP.NET</h1>
             <div class="row">
                 <div class="col-md-6">
                     <div class="card p-4 shadow-sm">
@@ -91,7 +91,7 @@
 
                             <div class="col-md-4 text-center">
                                 <div class="form-group">
-                                    <asp:Button runat="server" ID="btnUpdate" Text="Update" CssClass="btn btn-success w-100" />
+                                    <asp:Button runat="server" ID="btnUpdate" Text="Update" CssClass="btn btn-success w-100" OnClick="btnUpdate_Click" />
                                 </div>
                             </div>
 
