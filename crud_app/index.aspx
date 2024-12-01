@@ -7,6 +7,7 @@
     <title>CRUD APP</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/css/dataTables.dataTables.min.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -97,7 +98,7 @@
 
                             <div class="col-md-4 text-center">
                                 <div class="form-group">
-                                    <asp:Button runat="server" ID="btnDelete" Text="Remove" CssClass="btn btn-danger w-100" />
+                                    <asp:Button runat="server" ID="btnDelete" Text="Remove" CssClass="btn btn-danger w-100" OnClick="btnDelete_Click" />
                                 </div>
                             </div>
                         </div>
@@ -119,7 +120,9 @@
                             <div class="row">
 
                                 <div class="col">
-                                    <asp:GridView runat="server" ID="gr_userData" CssClass="table table-striped table-bordered">
+                                    <asp:SqlDataSource ID="viewData" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [data] ORDER BY [Id]">
+                                    </asp:SqlDataSource>
+                                    <asp:GridView runat="server" ID="gr_userData" CssClass="table table-striped table-bordered" AllowPaging="true" AllowSorting="true" DataSourceID="viewData">
                                     </asp:GridView>
                                 </div>
                             </div>
@@ -132,5 +135,7 @@
     </form>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/dataTables.min.js"></script>
+
 </body>
 </html>

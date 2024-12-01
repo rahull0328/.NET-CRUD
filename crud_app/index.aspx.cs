@@ -145,5 +145,51 @@ namespace crud_app
                 Response.Write("<script>alert('" + exc.Message + "');</script>");
             }
         }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (checkUserExists())
+            {
+                deleteUser();
+            }
+            else
+            {
+                Response.Write("<script>alert('User Doesn't Exists !');</script>");
+            }
+        }
+
+        void deleteUser()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strCon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                string gen;
+                if (rad_male.Checked == true)
+                {
+                    gen = rad_male.Text;
+                }
+                else
+                {
+                    gen = rad_female.Text;
+                }
+                SqlCommand cmd = new SqlCommand("DELETE FROM data WHERE id='" + txt_id.Text.Trim() + "' ", con);
+                int res = cmd.ExecuteNonQuery();
+                if (res == 1)
+                {
+                    Response.Write("<script>alert('Data Deleted Successfully !');</script>");
+                    clearForm();
+                    gr_userData.DataBind();
+                }
+                con.Close();
+            }
+            catch (Exception exc)
+            {
+                Response.Write("<script>alert('" + exc.Message + "');</script>");
+            }
+        }
     }
 }
