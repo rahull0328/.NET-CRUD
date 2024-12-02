@@ -191,5 +191,53 @@ namespace crud_app
                 Response.Write("<script>alert('" + exc.Message + "');</script>");
             }
         }
+
+        protected void btnGo_Click(object sender, EventArgs e)
+        {
+            if (checkUserExists())
+            {
+                searchUserById();
+            }
+            else
+            {
+                Response.Write("<script>alert('User Doesn't Exists !');</script>");
+            }
+        }
+
+        void searchUserById()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strCon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand("SELECT * FROM data WHERE id='" + txt_id.Text.Trim() + "' ", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read()) {
+                    txt_name.Text = dr["name"].ToString();
+                    txt_email.Text = dr["email"].ToString();
+                    if (dr["gender"].ToString() == rad_male.Text)
+                    {
+                        rad_male.Checked = true;
+                    }
+                    else
+                    {
+                        rad_female.Checked = true;
+                    }
+                    txt_phone.Text = dr["mobile"].ToString();
+                }
+                else
+                {
+                    Response.Write("<script>alert('No data found for the given ID.');</script>");
+                }
+                con.Close();
+            }
+            catch (Exception exc)
+            {
+                Response.Write("<script>alert('" + exc.Message + "');</script>");
+            }
+        }
     }
 }
