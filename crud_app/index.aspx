@@ -32,7 +32,7 @@
                                     <div class="input-group">
 
                                         <asp:TextBox ID="txt_id" runat="server" placeholder="Enter User Id" CssClass="form-control" />
-                                        <asp:Button runat="server" ID="btnGo" Text="Go" CssClass="btn btn-secondary" />
+                                        <asp:Button runat="server" ID="btnGo" Text="Go" CssClass="btn btn-secondary" OnClick="btnGo_Click" />
                                     </div>
                                 </div>
 
