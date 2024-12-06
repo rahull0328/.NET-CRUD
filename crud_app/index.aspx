@@ -122,7 +122,7 @@
                                 <div class="col">
                                     <asp:SqlDataSource ID="viewData" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [data] ORDER BY [Id]">
                                     </asp:SqlDataSource>
-                                    <asp:GridView runat="server" ID="gr_userData" CssClass="table table-striped table-bordered" AllowPaging="true" AllowSorting="true" DataSourceID="viewData">
+                                    <asp:GridView runat="server" ID="gr_userData" CssClass="table table-striped table-bordered" DataSourceID="viewData">
                                     </asp:GridView>
                                 </div>
                             </div>
