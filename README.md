@@ -1,5 +1,7 @@
 # ASP.NET CRUD Application
 
+<img src="./crud_app/assets/images/asp-crud.png" alt="Project Image" />
+
 This is a basic CRUD application built using ASP.NET. Follow the steps below to set up the application and ensure it runs correctly.
 
 ## Prerequisites
